@@ -35,7 +35,7 @@ f_sum = 0
 out_f = 0
 
 def Eating(eat_sat, f_sum, out_f, mood, health):
-     eat_need =(25 - eat_sat) / 5
+     eat_need = (25 - eat_sat) / 5
      
      print(' ')
      print('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>')
