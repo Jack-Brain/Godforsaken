@@ -1,6 +1,6 @@
 import time
 
-eat_sat = 10
+eat_sat = 10 
 mood = 0
 health = 0
 
@@ -31,10 +31,6 @@ f_amount = [fry_meat.amount, row_meat.amount, canned_food.amount, berries.amount
 f_name   = [fry_meat.name,   row_meat.name,   canned_food.name,   berries.name]
 f_value  = [fry_meat.value,  row_meat.value,  canned_food.value,  berries.value]
 
-fn_list = []
-fv_list = []
-fa_list = []
-
 f_sum = 0
 out_f = 0
 
@@ -47,36 +43,33 @@ def Eating(eat_sat, f_sum, out_f, mood, health):
      print('Чтобы наесться, вы должны съесть: '+str(eat_need)+'(кг)')
      print(' ')
 
-     for x in range(4):
-          f_sum += f_amount[x]                                   #общее кол-во пищи
+     for x in range(4):                                                         #Общее кол-во пищи
+          f_sum += f_amount[x]                                                  
 
-     if f_sum > 0 :                
-          print('У вас есть:')                                   #проверка на пустоту склада
+     if f_sum > 0 :                                                             #Проверка на пустоту склада
+          print('У вас есть:')
           print(' ')
      else :
           print('У вас нет еды!')
-          time.sleep(2)
+          time.sleep(2) 
           #Menu(date_g, time_g)
 
-     for y in range(4):                                          #основной список
+     for y in range(4):                                                         #Основной список
           if f_amount[y] > 0 :
                out_f += 1
                print(str(out_f)+'. '+str(f_name[y]))
                print('Питательность: '+str(f_value[y]))
                print('Кол-во: '+str(f_amount[y])+'кг')
                print(' ')
-               fn_list.append(f_name[y])
-               fv_list.append(f_value[y])
-               fa_list.append(f_amount[y])
 
-     ch_n1 = input('Введите номер выбранного продукта: ')
-     if int(ch_n1) < 0 or int(ch_n1) > 4 :                       #проверка на правильность ввода
+     ch_n1 = input('Введите номер выбранного продукта: ')                       #Проверка на правильность ввода
+     if ch_n1 == '' or int(ch_n1) < 0 or int(ch_n1) > 4 : 
           print('Вы ввели неправильное значение!')
           time.sleep(2)
           #Menu(date_g, time_g)
           
-     ch_n2 = input('Введите кол-во выбранного продукта(кг): ')   #защита от обманщика
-     if int(ch_n2) < 0 or int(ch_n2) > fa_list[int(ch_n1)-1]:
+     ch_n2 = input('Введите кол-во выбранного продукта(кг): ')                  #Защита от обманщика
+     if ch_n1 == '' or int(ch_n2) < 0 or int(ch_n2) > fa_list[int(ch_n1)-1]:
           print('Вы ввели неправильное значение!')
           time.sleep(2)
           #Menu(date_g, time_g)
@@ -86,10 +79,11 @@ def Eating(eat_sat, f_sum, out_f, mood, health):
      print(' ')
      print('Вы съели '+ch_n2+'кг продукта "'+fn+'"')
 
-     fv = fv_list[int(ch_n1)-1] * int(ch_n2)
-     eat_sat = eat_sat + fv                                      #необходимые изменения
+     fv = fv_list[int(ch_n1)-1] * int(ch_n2)                                    #Необходимые изменения
+     eat_sat = eat_sat + fv
      mood = mood + 4
      health = health + 3
+     
      time_m = 30
      '''if i >= 1 :
           tl = Time(tl[0], tl[1], tl[2], tl[3], tl[4], tl[5], tl[6], tl[7])
@@ -100,6 +94,6 @@ def Eating(eat_sat, f_sum, out_f, mood, health):
      i += 1'''
           
      time.sleep(2)
-     #Menu(date_g, time_g)                                       #выход
+     #Menu(date_g, time_g)                                                      #выход
      
 Eating(eat_sat, f_sum, out_f, mood, health)
