@@ -9,16 +9,6 @@ health = 5
 eat_sat = 5
 drink_sat = 5
 
-class Human :
-     eat = 0
-     drink = 0
-     sleep = 0
-     mood = 0
-     strength = 0
-     health = 0
-     wep = ''
-man = Human()
-
 class Animal:
      profit = 0
      name = ''
@@ -85,7 +75,7 @@ def Hunting(name, i,  mood, health, eat_sat, drink_sat):
      if hunt_r >= 0 and hunt_r <=60 :
           anim_r = random.randint(1,100)
           if anim_r >= 0 and anim_r <=10 :
-               name = a_name[0]
+               name = a_name[0]                                                 #Необходимые присваивания
                prof = a_prof[0]
                print('Вы нашли животное "'+name+'"')
                Hunting_dop(name, prof, i,  mood, health, eat_sat, drink_sat)
@@ -117,19 +107,19 @@ def Hunting(name, i,  mood, health, eat_sat, drink_sat):
 def Hunting_dop(name, prof, i,  mood, health, eat_sat, drink_sat):              #Основная функция
      print(' ')
      print('1. Атаковать')
-     print('2. Преследовать')  
      if i < 2 :
-          print('3. Ждать')                                                      #Ловушка для обмащика                                                     #Нельзя "Ждать" больше 3 раз :)
-          print('')
-     i +=1
-     ch_n = input('Введите номер желаемого действия: ')                          #Обработка ввода
+          print('2. Преследовать') 
+          print('3. Ждать')                                                     #    Ловушка для обмащика  
+          print('')                                                             #Нельзя "Ждать" и "Преследовать" больше 2 раз 
+     i +=1                                                                                
+     ch_n = input('Введите номер желаемого действия: ')                         #Обработка ввода
      if ch_n == '1' :
           print('Вы атаковали животное "'+name+'"')
           Fighting(name, prof,  mood, health, eat_sat, drink_sat)
      elif ch_n == '2' :
           attack_r1 = random.randint(1,100)
-          if attack_r1 > 80 and attack_r1 <= 100:                               #С вероятностью 20% животное                                            #    может вас атаковать
-               print('Вы были атакованы животным "'+name+'"')                   # может вас атаковать
+          if attack_r1 > 80 and attack_r1 <= 100:                               #С вероятностью 20% животное
+               print('Вы были атакованы животным "'+name+'"')                   #    может вас атаковать
                Fighting(name, prof,  mood, health, eat_sat, drink_sat)
           else:
                wait = random.randint(5,10)
@@ -139,9 +129,11 @@ def Hunting_dop(name, prof, i,  mood, health, eat_sat, drink_sat):              
                Hunting_dop(name, prof, i,  mood, health, eat_sat, drink_sat)
      elif ch_n == '3' :
           attack_r2 = random.randint(1,100)
-          if attack_r2 > 80 and attack_r2 <= 100:                               #С вероятностью 20% животное                                            #    может вас атаковать
-               print('Вы были атакованы животным "'+name+'"')                   # может вас атаковать
+          if attack_r2 > 70 and attack_r2 <= 95:                               #С вероятностью 20% животное 
+               print('Вы были атакованы животным "'+name+'"')                  #    может вас атаковать
                Fighting(name, prof,  mood, health, eat_sat, drink_sat)
+          elif attack_r2 > 95 and attack_r2 <= 100:
+               print('Животное ушло')
           else:
                wait = random.randint(5,10)
                print('')
@@ -156,7 +148,7 @@ def Fighting(name, prof,  mood, health, eat_sat, drink_sat) :                   
 
      out_f = 0
      
-     for y in range(4):                                                         #основной список
+     for y in range(4):                                                         #Основной список
           if w_amount[y] > 0 :
                out_f += 1
                print(str(out_f)+'. '+str(w_name[y]))
@@ -191,7 +183,7 @@ def Fighting(name, prof,  mood, health, eat_sat, drink_sat) :                   
           if end_h >= 1 and end_h <= 5 :
                print('Вы были повержены и бежали...')
                
-               eat_sat += 5
+               eat_sat += 5                                                     #Необходимые изменения
                drink_sat += 5
                mood -= 5
                
@@ -208,7 +200,7 @@ def Fighting(name, prof,  mood, health, eat_sat, drink_sat) :                   
                print('Вы победили!')
                print('Вы получили '+str(prof)+'(кг) мяса.')
 
-          eat_sat += 3
+          eat_sat += 3                                                          #Необходимые изменения X2
           drink_sat += 3
           mood += 4
 
@@ -221,6 +213,9 @@ def Fighting(name, prof,  mood, health, eat_sat, drink_sat) :                   
           tl = Time(hour, mint, day, mon, time_m, time_h, time_gl, date_gl)
           time.sleep(2)
      i += 1'''
+     
+     time.sleep(2)
+     #Menu(date_g, time_g)                                                      #Выход
      
           
 Hunting(name, i,  mood, health, eat_sat, drink_sat)   
