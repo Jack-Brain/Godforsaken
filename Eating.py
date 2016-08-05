@@ -94,6 +94,6 @@ def Eating(eat_sat, f_sum, out_f, mood, health):
      i += 1'''
           
      time.sleep(2)
-     #Menu(date_g, time_g)                                                      #выход
+     #Menu(date_g, time_g)                                                      #Выход
      
 Eating(eat_sat, f_sum, out_f, mood, health)
