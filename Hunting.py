@@ -203,8 +203,9 @@ def Fighting(name, prof,  mood, health, eat_sat, drink_sat) :                   
           eat_sat += 3                                                          #Необходимые изменения X2
           drink_sat += 3
           mood += 4
-
-     time_m = 1 + random.randint(0,3)
+     
+     time_h = 2 + random.randint(0,3)
+     time_m = random.randint(14,31)
           
      '''if i >= 1 :
           tl = Time(tl[0], tl[1], tl[2], tl[3], tl[4], tl[5], tl[6], tl[7])
